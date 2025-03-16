@@ -1,4 +1,4 @@
-package com.performance
+package net.codecision.performance
 
 import android.app.Application
 import com.facebook.react.PackageList

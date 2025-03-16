@@ -1,4 +1,4 @@
-package com.performance
+package net.codecision.performance
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

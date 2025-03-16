@@ -35,8 +35,9 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
         release {
-            isMinifyEnabled = true
+            isShrinkResources = true
             signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -53,10 +54,22 @@ android {
     buildFeatures {
         viewBinding = true
     }
+//    splits {
+//        abi {
+//            isEnable = true
+//            reset()
+//            include("arm64-v8a")
+//            isUniversalApk = false
+//        }
+//        density {
+//            isEnable = true
+//            reset()
+//            include("xxxhdpi")
+//        }
+//    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
