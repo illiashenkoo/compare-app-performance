@@ -29,12 +29,33 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
-
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("../../../../../debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+        create("release") {
+            storeFile = file("../../../../../iom-tmp.keystore")
+            storePassword = "2U2JRZcErM2XqK6iXHxIwtkzjS7Hfd"
+            keyAlias = "iom-tmp"
+            keyPassword = "Z65aGM73r0IMxJG6MyL5jjCdc4puEJ"
+        }
+    }
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("debug")
+        }
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("release")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
